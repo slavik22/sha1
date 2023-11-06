@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	randomString, err := generateRandomString(1024) // Change the string length as needed
+	randomString, err := generateRandomString(1024)
 	if err != nil {
 		fmt.Println("Error generating random string:", err)
 		return
