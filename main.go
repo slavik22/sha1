@@ -11,24 +11,20 @@ import (
 )
 
 func main() {
-	// Generate a random string
 	randomString, err := generateRandomString(1024) // Change the string length as needed
 	if err != nil {
 		fmt.Println("Error generating random string:", err)
 		return
 	}
 
-	// Test the custom SHA-1 implementation
 	startCustom := time.Now()
 	customHash := customSHA1(randomString)
 	elapsedCustom := time.Since(startCustom)
 
-	// Test the crypto/sha1 package
 	startCrypto := time.Now()
 	cryptoHash := sha1.Sum([]byte(randomString))
 	elapsedCrypto := time.Since(startCrypto)
 
-	// Compare the two hashes
 	hashMatch := compareHashes(customHash, cryptoHash)
 
 	fmt.Printf("Custom SHA-1 Hash: %x\n", customHash)
@@ -64,7 +60,6 @@ func compareHashes(hash1, hash2 [20]byte) bool {
 }
 
 func customSHA1(input string) [20]byte {
-	// Initialize constants
 	h0 := uint32(0x67452301)
 	h1 := uint32(0xEFCDAB89)
 	h2 := uint32(0x98BADCFE)
